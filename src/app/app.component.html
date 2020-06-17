@@ -1,0 +1,46 @@
+<div>
+  <h1>Administración de artículos</h1>
+    <table border="1" *ngIf="hayRegistros(); else sinproductos">
+      <tr>
+        <td>Codigo</td>
+        <td>Nombre</td>
+        <td>Precio</td>
+        <td>Tipo</td>
+        <td>Descripcion</td>
+        <td>Distribuidora</td>
+        <td>Borrar</td>
+        <td>Seleccionar</td>
+      </tr>
+      <tr *ngFor="let articulo of lista">
+        <td>{{articulo.id}}</td>
+        <td>{{articulo.nombre}}</td>
+        <td>{{articulo.precio}}</td>
+        <td>{{articulo.tipo}}</td>
+        <td>{{articulo.descripcion}}</td>
+        <td>{{articulo.distribuidora}}</td>
+        <td><button (click)="eliminar(articulo.id)">Borrar?</button></td>
+        <td><button (click)="mostrar(articulo.id)">Seleccionar</button></td>
+      </tr>
+    </table>
+    <ng-template #sinproductos><p>No hay productos</p></ng-template>
+    <div>
+      <h1>Datos</h1>
+      <p>
+        Nombre:<input type="text" [(ngModel)]="prod.nombre" />
+      </p>
+      <p>
+        Precio:<input type="text" [(ngModel)]="prod.precio" />
+      </p>
+      <p>
+        Tipo:<input type="text" [(ngModel)]="prod.tipo" />
+      </p>
+      <p>
+        Descripcion:<input type="text" [(ngModel)]="prod.descripcion" />
+      </p>
+      <p>
+        Distribuidora:<input type="text" [(ngModel)]="prod.distribuidora" />
+      </p>            
+      <p><button (click)="nuevo()">Agregar</button>
+      <button (click)="actualizar()">Modificar</button></p>
+    </div>
+</div>
